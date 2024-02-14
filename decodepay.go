@@ -36,6 +36,11 @@ func Decodepay(bolt11 string) (Bolt11, error) {
 		msat = int64(*inv.MilliSat)
 	}
 
+	var paymentSecret string
+        if inv.PaymentAddr != nil {
+		paymentSecret = hex.EncodeToString(inv.PaymentAddr[:])
+        }
+
 	var desc string
 	if inv.Description != nil {
 		desc = *inv.Description
@@ -70,6 +75,7 @@ func Decodepay(bolt11 string) (Bolt11, error) {
 
 	return Bolt11{
 		MSatoshi:           msat,
+		PaymentSecret:      paymentSecret,
 		PaymentHash:        hex.EncodeToString(inv.PaymentHash[:]),
 		Description:        desc,
 		DescriptionHash:    deschash,
@@ -88,6 +94,7 @@ type Bolt11 struct {
 	Expiry             int     `json:"expiry"`
 	Payee              string  `json:"payee"`
 	MSatoshi           int64   `json:"msatoshi"`
+	PaymentSecret      string  `json:"payment_secret,omitempty"`
 	Description        string  `json:"description,omitempty"`
 	DescriptionHash    string  `json:"description_hash,omitempty"`
 	PaymentHash        string  `json:"payment_hash"`

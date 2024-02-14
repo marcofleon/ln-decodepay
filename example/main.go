@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 	"fmt"
 
-	decodepay "github.com/nbd-wtf/ln-decodepay"
+	decodepay "github.com/marcofleon/ln-decodepay"
 )
 
 func main() {
@@ -15,4 +15,10 @@ func main() {
 	bolt11, _ = decodepay.Decodepay("lnbc6540n1pwap9atpp52jwdhxg3pz89e8qh26dxpjfqz5nppak70xlhqmqks4jml0tckxashp5sm6h5lymne3d90kdy3pml9us0pr2kw4zktjgyps3h34hhl0tkv7sxqrrssnp4qdkuuuwgkqyk9ltmu8jjc297j3d5tfrw4pvvacwg7hdwqdwszavlw0gga08t3x85udljaqphq29lzz0me5lpcs6rrcxuee2nezrgyny7hyxktjle6ygvrzxffem2hd7e9qj2c2tpyxlcsg6w9skguxatdyxqpk6ru20")
 	j, _ = json.MarshalIndent(bolt11, "", "  ")
 	fmt.Println(string(j))
+	
+	bolt11, _ = decodepay.Decodepay("lnbc2500u1pvjluezsp5zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zyg3zygspp5qqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqqqsyqcyq5rqwzqfqypqdq5xysxxatsyp3k7enxv4jsxqzpu9qrsgquk0rl77nj30yxdy8j9vdx85fkpmdla2087ne0xh8nhedh8w27kyke0lp53ut353s06fv3qfegext0eh0ymjpf39tuven09sam30g4vgpfna3rh")
+	j, _ = json.MarshalIndent(bolt11, "", "  ")
+	fmt.Println(string(j))
+	
+
 }
